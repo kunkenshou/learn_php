@@ -86,8 +86,12 @@ do {
       }
 
       $is_number = readline("変更する行番号を入力してください：");
-      $is_value = readline("変更する内容を入力してください：");
-
+      $is_day = readline("変更する日付を入力してください：");
+      $is_paymoney = readline("変更する金額を入力してください：");
+      $is_itemname = readline("変更する商品名：");
+      $is_storename = readline("変更する個入店：");
+      $is_receiptno = readline("変更するレシート番号：");
+      $is_value = ("$is_day,$is_paymoney,$is_itemname,$is_storename,$is_receiptno\n");
       $replacements = array($is_number => $is_value);
       $arraynew = array_replace($array, $replacements);
 
