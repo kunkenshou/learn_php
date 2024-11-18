@@ -19,10 +19,10 @@ do {
     $day = readline("日付：");
     $paymoney = readline("払ったお金：");
     $item = readline("商品名：");
-    //$store_neme = redline("購入店：");
-    //$receipt_no = redline("レシート番号：");
+    $store_neme = readline("購入店：");
+    $receipt_no = readline("レシート番号：");
 
-    $data = array($day,$paymoney,$item);
+    $data = array($day,$paymoney,$item,$store_neme,$receipt_no);
 
     //[書き込むファイル]
     $file = "text.csv";
@@ -31,7 +31,7 @@ do {
     $fp = fopen($file, 'a+');
 
     //[値を書き込む]
-    $list = ("$day,$paymoney,$item\n");
+    $list = ("$day,$paymoney,$item,$store_neme,$receipt_no\n");
       
     fwrite($fp,$list);
 
@@ -49,7 +49,10 @@ do {
     $input = file_get_contents($file);
 
     $array = preg_split("[\n]", $input);
-    print_r($array);
+    
+    for ($i = 0; $i < count($array); $i++) {
+      print_r("[$i]$array[$i]\n");
+    }
 
       $dele_no = readline("削除したい行番号を入力してください");
   
@@ -68,11 +71,41 @@ do {
     break;  
   //[変更の処理]
     case 3:
-      echo("変更の処理作成中");
+      echo("変更の処理作成中\n");
+
+      $fp = "text.csv";
+
+      $data = file_get_contents($fp);
+
+      $array = preg_split("[\n]",$data);
+
+      //print_r($array);
+
+      for ($i = 0; $i < count($array); $i++) {
+        print_r("[$i]$array[$i]\n");
+      }
+
+      $is_number = readline("変更する行番号を入力してください：");
+      $is_value = readline("変更する内容を入力してください：");
+
+      $replacements = array($is_number => $is_value);
+      $arraynew = array_replace($array, $replacements);
+
+      print_r($arraynew);
+
+      $fp = fopen($fp,"w");
+      
+      for ($i = 0; $i < count($arraynew); $i++) {
+          $hoge = ($arraynew[$i]);
+          fwrite($fp,$hoge);
+        }
+
+    fclose($fp);
+
     break;
   //[メニューに戻る]
     case 4:
-      echo("メニューに戻る処理作成中");
+      echo("メニューに戻る処理作成中\n");
     break;
     }
   }
