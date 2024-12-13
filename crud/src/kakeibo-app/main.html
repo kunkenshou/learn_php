@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+  <head>
+    <title>kakeibo-app</title>
+  </head>
+  <body>
+    <form action="main.php" method="post">
+      <div class="form-example">
+        <label for="day">日付:</label>
+        <input type="date" name="day" id="day" required />
+      </div>
+      <div class="form-example">
+        <label for="receipt">レシート番号:</label>
+        <input type="text" name="receipt" id="receipt" required />
+      </div>
+    <div class="form-example">
+      <label for="store">購入店:</label>
+      <input type="text" name="store" id="store" required />
+    </div>
+    <div class="form-example">
+      <label for="items">商品:</label>
+      <input type="text" name="items" id="items" required />
+    </div>
+    <div class="form-example">
+      <label for="money">代金:</label>
+      <input type="number" name="money" id="money" required />
+    </div>
+      <div class="form-example">
+      <input type="submit" value="登録" />
+    </div>
+    </form>
+  </body>
+</html>
